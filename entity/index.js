@@ -33,7 +33,9 @@ db.Sequelize = Sequelize
 db.sequelize = sequelize
 
 db.candidates = require('./candidate.js')(sequelize, DataTypes)
-db.upcomingexam = require('./exam')(sequelize, DataTypes)
+db.candidateExam = require('./candidateExam')(sequelize, DataTypes)
+db.candidateResponse = require('./candidateResponse')(sequelize,DataTypes)
+
 //db.response = require('../entity/response.js')(sequelize,DataTypes)
 
 db.sequelize.sync({ force: false })
@@ -41,6 +43,6 @@ db.sequelize.sync({ force: false })
         console.log("yes re sync is done")
     })
 
-db.candidates.hasMany(db.upcomingexam, { foreignKey: 'candidateId' });
-db.upcomingexam.belongsTo(db.candidates);
+db.candidates.hasMany(db.candidateExam, { foreignKey: 'candidateId' });
+db.candidateExam.belongsTo(db.candidates);
 module.exports = db

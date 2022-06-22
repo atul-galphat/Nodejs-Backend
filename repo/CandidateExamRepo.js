@@ -1,6 +1,6 @@
 const { Console } = require('winston/lib/winston/transports');
 const db = require('../entity')
-const upcoming_exam = db.upcomingexam;
+const CandidateResponse = db.candidateExam;
 
 const addExam = async (req, res) => {
     try {
@@ -13,15 +13,15 @@ const addExam = async (req, res) => {
             status: req.body.status,
             candidateId: req.body.candidateId
         }
-        const upcomingexam = await upcoming_exam.create(info);
-        return upcomingexam;
+        const candidateExam = await CandidateResponse.create(info);
+        return candidateExam;
     } catch (error) {
         throw new Error("incorrectdata")
     }
 
 }
 const getAllExam = async (req, res) => {
-    let upcomingexam = await upcoming_exam.findAll({
+    let upcomingexam = await CandidateResponse.findAll({
 
     });
     if (!upcomingexam && upcomingexam.length <= 0) {
@@ -32,7 +32,7 @@ const getAllExam = async (req, res) => {
 }
 const getExamById = async (req, res) => {
     let Id = req.params.id;
-    let upcomingexam = await upcoming_exam.findOne({
+    let upcomingexam = await CandidateResponse.findOne({
         where: { id: Id }
     });
     if (!upcomingexam) {
@@ -45,7 +45,7 @@ const updateExamById = async (req, res) => {
 
     try {
         let Id = req.params.id;
-        let upcomingexam = await upcoming_exam.update(req.body, {
+        let upcomingexam = await CandidateResponse.update(req.body, {
             where: { id: Id }
         })
         if (!upcomingexam[0]) {
@@ -61,7 +61,7 @@ const updateExamById = async (req, res) => {
 }
 const getAllExamByStatus = async (req, res) => {
     let sts = req.params.id;
-    let upcomingexam = await upcoming_exam.findAll({
+    let upcomingexam = await CandidateResponse.findAll({
         where: { status: sts }
 
     });
@@ -73,7 +73,7 @@ const getAllExamByStatus = async (req, res) => {
 
 const deleteExam = async (req, res) => {
     let Id = req.params.id;
-    let upcomingexam = await upcoming_exam.destroy({
+    let upcomingexam = await CandidateResponse.destroy({
         where: { id: Id }
     });
     if (!upcomingexam) {
@@ -84,7 +84,7 @@ const deleteExam = async (req, res) => {
 const updateStatus = async (req, res) => {
     let Id = req.params.id;
     let uId = req.params.uId
-    let exam = await upcoming_exam.update(req.body, {
+    let exam = await CandidateResponse.update(req.body, {
         where: { id: Id, candidateId: uId }
     })
     if (!upcomingexam[0]) {
@@ -94,7 +94,7 @@ const updateStatus = async (req, res) => {
 }
 const getAllUpcomingExamByUid = async (req, res) => {
     let Id = req.params.uId;
-    let upcomingexam = await upcoming_exam.findAll({
+    let upcomingexam = await CandidateResponse.findAll({
         where: {
             candidateId: Id,
             status: 0
@@ -107,7 +107,7 @@ const getAllUpcomingExamByUid = async (req, res) => {
 }
 const getAllProcessingExambyUid = async (req, res) => {
     let Id = req.params.uId;
-    let processingexam = await upcoming_exam.findAll({
+    let processingexam = await CandidateResponse.findAll({
         where: {
             candidateId: Id,
             status: 1
@@ -120,7 +120,7 @@ const getAllProcessingExambyUid = async (req, res) => {
 }
 const getAllGivenExambyUid = async (req, res) => {
     let Id = req.params.uId;
-    let givenexam = await upcoming_exam.findAll({
+    let givenexam = await CandidateResponse.findAll({
         where: {
             candidateId: Id,
             status: 2

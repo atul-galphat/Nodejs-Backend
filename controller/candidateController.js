@@ -1,4 +1,4 @@
-const candidateService = require('../services/candidateService')
+const candidateService = require('../services/CandidateService')
 const candidateErrors = require('../error/errorMessages');
 const logger = require('../loggerConfig/loggerConfig');
 

@@ -1,4 +1,4 @@
-const candidateRepo = require('../repo/candidateRepo')
+const candidateRepo = require('../repo/CandidateRepo')
 
 
 const create = async (req, res) => {

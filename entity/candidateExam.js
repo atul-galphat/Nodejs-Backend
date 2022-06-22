@@ -1,13 +1,14 @@
 const candidate = require("./candidate");
 
 module.exports = (sequelize, Sequelize) => {
-  const exam = sequelize.define("candidateexam", {
-    examName: {
-      type: Sequelize.STRING
-      //allowNull : false
+  const candidateExam = sequelize.define("candidateexam", {
+    candidateId: {
+      type: Sequelize.INTEGER,
+      allowNull : false
     },
-    examType: {
-      type: Sequelize.STRING
+    examId: {
+      type: Sequelize.INTEGER,
+      allowNull : false
     },
     startTime: {
       type: Sequelize.DATE
@@ -22,11 +23,8 @@ module.exports = (sequelize, Sequelize) => {
       validate: {
         isIn: [[0, 1, 2]]
       }
-    },
-    candidateId: {
-      type: Sequelize.INTEGER
     }
   });
 
-  return exam;
+  return candidateExam;
 };

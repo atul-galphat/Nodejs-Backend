@@ -1,4 +1,4 @@
-const examRepo = require('../repo/examRepo')
+const examRepo = require('../repo/CandidateExamRepo')
 
 const addUpcomingExam = async (req, res) => {
     const createcandiddate = await examRepo.addExam(req, res);
