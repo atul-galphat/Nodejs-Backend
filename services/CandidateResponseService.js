@@ -2,11 +2,11 @@ const candidateResponseRepo = require('../repo/CandidateResponseRepo');
 
 const addResponse = async (req, res) => {
     let candiadteResponse = await candidateResponseRepo.addResponse(req, res);
+    console.log("in the service.................");
     return candiadteResponse;
 }
 const getAllResponseByCandidateId = async (req, res) => {
     let candiadteResponse = await candidateResponseRepo.getAllResponseByCandidateId(req, res);
-    console.log("in the service.................")
     return candiadteResponse;
 }
 const getResponseByCandidateIdQueId = async (req, res) => {

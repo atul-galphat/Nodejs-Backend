@@ -1,9 +1,9 @@
 const db = require('../entity')
-const CandidateResponse = db.candidateResponse;;
+const CandidateResponse = db.candidateResponse;
 
-const addResponse = async(req ,res) =>{
+const addResponse = async(req,res)=>{
     try {
-        let info = {
+        let info ={
             candidateId: req.body.candidateId,
             examId: req.body.examId,
             queId: req.body.queId,
@@ -12,21 +12,18 @@ const addResponse = async(req ,res) =>{
         const candidateResponse = await CandidateResponse.create(info);
         return candidateResponse;
     } catch (error) {
-        throw new Error("incorrectdata")
+        console.log(error);
+        throw new Error("incorrectdata");
     }
 }
-
 const getAllResponseByCandidateId = async(req ,res) =>{
-    let uId = req.params.uId
-    console.log("in the repo before function call")
+    let uId = req.params.uId;
     let candidateResponse = await CandidateResponse.findAll({
         where:{
             candidateId : uId
         }
     });
-    console.log("in the get all function ......................")
     if(!candidateResponse){
-        console.log("in the catch block of the all response........................")
         throw new Error("notfound")
     }
     return candidateResponse;
@@ -48,12 +45,15 @@ const getResponseByCandidateIdQueId = async(req ,res) =>{
 const updateResponseByCandidateIdQueId = async(req ,res) =>{
     let uId = req.params.uId;
     let qId = req.params.qId;
-    let candiadteResponse = await CandidateResponse.update({
+    console.log("in repo Update functoin..........")
+    console.log("uid = "+uId +"queid = "+qId);
+    let candiadteResponse = await CandidateResponse.update(req.body,{
         where:{
             candidateId:uId,
             queId:qId
         }
     })
+    console.log("in repo Update functoin..........111111111111111111111")
     if (!candiadteResponse[0]) {
         throw new Error("notfound");
     }

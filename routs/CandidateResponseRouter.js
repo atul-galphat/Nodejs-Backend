@@ -2,7 +2,7 @@ const router = require('express').Router();
 const candiadteResponseController = require('../controller/CandidateResponseController');
 const { route } = require('./CandidateExamRouter');
 
-router.post('/addresponse',candiadteResponseController.addResponse );
+router.post('/addresponse',candiadteResponseController.addResponse);
 
 router.get('/get/allresponse/candidateId/:uId',candiadteResponseController.getAllResponseByCandidateId);
 

@@ -8,8 +8,6 @@ router.get('/getallexam', examController.getAllExam);
 
 router.put('/update/exam/id/:id', examController.updateStatusById);
 
-router.get('/getall/exambystatus/status/:id', examController.getAllUpcomingExamByStatus);
-
 router.get('/getexam/id/:id', examController.getExamById);
 
 router.delete('/deleteexam/id/:id',examController.deleteUpcomingExam);

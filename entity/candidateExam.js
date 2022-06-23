@@ -13,8 +13,8 @@ module.exports = (sequelize, Sequelize) => {
     startTime: {
       type: Sequelize.DATE
     },
-    duration: {
-      type: Sequelize.INTEGER
+    endTime: {
+      type: Sequelize.DATE
     },
     status: {
       type: Sequelize.INTEGER,

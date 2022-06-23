@@ -16,10 +16,6 @@ const updateStatusById = async (req, res) => {
     let oneUpcomingExam = await examRepo.updateExamById(req, res);//updateStatusById
     return oneUpcomingExam;
 }
-const getAllUpcomingExamByStatus = async (req, res) => {
-    let upcomungexaByStatus = await examRepo.getAllExamByStatus(req, res);//getAllUpcomingExamByStatus
-    return upcomungexaByStatus;
-}
 const deleteUpcomingExamById = async (req, res) => {
     let upcomingexam = await examRepo.deleteExam(req, res);//deleteUpcomingExam
     return upcomingexam;
@@ -45,7 +41,6 @@ module.exports = {
     getAllUpcomingExam,
     getById,
     updateStatusById,
-    getAllUpcomingExamByStatus,
     deleteUpcomingExamById,
     updateStatus,
     getAllUpcomingExamByUid,

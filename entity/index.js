@@ -1,7 +1,5 @@
-
 const dbconfig = require('../dbConfig/dbconfig.js');
 const { Sequelize, DataTypes } = require("sequelize");
-
 
 const sequelize = new Sequelize(
     dbconfig.DB,
@@ -27,7 +25,6 @@ sequelize.authenticate()
     .catch(err => {
         console.log("error" + err);
     })
-
 const db = {}
 db.Sequelize = Sequelize
 db.sequelize = sequelize

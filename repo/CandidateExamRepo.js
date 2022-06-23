@@ -5,13 +5,10 @@ const CandidateResponse = db.candidateExam;
 const addExam = async (req, res) => {
     try {
         let info = {
-            examName: req.body.examName,
-            examType: req.body.examType,
-            startTime: req.body.startTime,
-            startDate: req.body.startDate,
-            duration: req.body.duration,
-            status: req.body.status,
-            candidateId: req.body.candidateId
+            candidateId:req.body.candidateId,
+            examId:req.body.examId,
+            startTime:req.body.startTime,
+            endTime:req.body.endTime
         }
         const candidateExam = await CandidateResponse.create(info);
         return candidateExam;
@@ -59,18 +56,6 @@ const updateExamById = async (req, res) => {
         throw new Error("ValidationError");
     }
 }
-const getAllExamByStatus = async (req, res) => {
-    let sts = req.params.id;
-    let upcomingexam = await CandidateResponse.findAll({
-        where: { status: sts }
-
-    });
-    if (!upcomingexam) {
-        throw new Error("notfound");
-    }
-    return upcomingexam;
-}
-
 const deleteExam = async (req, res) => {
     let Id = req.params.id;
     let upcomingexam = await CandidateResponse.destroy({
@@ -136,7 +121,6 @@ module.exports = {
     getAllExam,
     getExamById,
     updateExamById,
-    getAllExamByStatus,
     deleteExam,
     updateStatus,
     getAllUpcomingExamByUid,

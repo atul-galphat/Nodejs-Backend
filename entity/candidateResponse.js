@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const candiadteResponse = sequelize.define("candidateresponse", {      // product is the entity name
+    const candiadteResponse = sequelize.define("candidateresponse", {  
       candidateId: {
         type: Sequelize.INTEGER,
         allowNull : false
