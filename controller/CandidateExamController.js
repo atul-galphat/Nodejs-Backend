@@ -1,6 +1,7 @@
-const ExamService = require('../services/CandidateExamService')
-const ExamErrorMsg = require('../error/errorMessages')
-const examRepo = require ('../repo/CandidateExamRepo')
+const ExamService = require('../services/CandidateExamService');
+const ExamErrorMsg = require('../error/errorMessages');
+const examRepo = require ('../repo/CandidateExamRepo');
+const logger = require('../loggerConfig/loggerConfig');
 
 //create upcomingexam 
 const addExam = async (req, res,next) => {
