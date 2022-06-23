@@ -2,7 +2,6 @@ module.exports = (sequelize, Sequelize) => {
   const candiadte = sequelize.define("candidate", {      // product is the entity name
     username: {
       type: Sequelize.STRING
-      //allowNull : false
     },
     password: {
       type: Sequelize.STRING

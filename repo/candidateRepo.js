@@ -14,19 +14,14 @@ const addcandidate = async (req) => {
             contact: req.body.contact
         }
         const candidate = await Candidate.create(info);
-        console.log(candidate)
         return candidate;
     } catch (error) {
         throw new Error("incorrectdata")
-    }
-    
+    }  
 }
-
 const getAllcandidate = async () => {
     let candidate = await Candidate.findAll({
-
         attributes: { exclude: 'password' }
-
     });
     if (!candidate && candidate.length <= 0) {
         throw new Error("notfound")
@@ -62,28 +57,24 @@ const getCandidatebyIdWithExam = async (req) => {
         where: { id: Id },
         include: upcomingexam,
         attributes: { exclude: 'password' }
-
     });
     if (!candidate) {
         throw new Error("notfound")
     }
     return candidate;
 }
-
 const updateCandidate = async (req) => {
     let Id = req.params.id;
     let candidate = await Candidate.update(req.body, {
         where: { id: Id },
         include: upcomingexam,
         attributes: { exclude: 'password' }
-
     });
     if (!candidate[0]) {
         throw new Error("notfound")
     }
     return candidate;
 }
-
 const deleteCandidateByid = async (req) => {
     let Id = req.params.id;
     let candidate = await Candidate.destroy({
@@ -94,11 +85,6 @@ const deleteCandidateByid = async (req) => {
     }
     return candidate;
  }
-const getcandidate = async (req)=>{
-    let candi = await sequelize.query("SELECT * FROM `candidates`", {type:sequelize.QueryTypes.SELECT });
-    console.log(candi);
-    return candi;
-}
 module.exports = {
     addcandidate,
     getAllcandidate,
@@ -107,5 +93,4 @@ module.exports = {
     deleteCandidateByid,
     getAllcandidateWithExam,
     getCandidatebyIdWithExam,
-    getcandidate
 }

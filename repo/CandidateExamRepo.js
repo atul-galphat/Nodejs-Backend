@@ -5,27 +5,24 @@ const CandidateResponse = db.candidateExam;
 const addExam = async (req, res) => {
     try {
         let info = {
-            candidateId:req.body.candidateId,
-            examId:req.body.examId,
-            startTime:req.body.startTime,
-            endTime:req.body.endTime
+            candidateId: req.body.candidateId,
+            examId: req.body.examId,
+            startTime: req.body.startTime,
+            endTime: req.body.endTime
         }
         const candidateExam = await CandidateResponse.create(info);
         return candidateExam;
     } catch (error) {
         throw new Error("incorrectdata")
     }
-
 }
 const getAllExam = async (req, res) => {
     let upcomingexam = await CandidateResponse.findAll({
-
     });
     if (!upcomingexam && upcomingexam.length <= 0) {
         throw new Error("notfound");
     }
     return upcomingexam;
-
 }
 const getExamById = async (req, res) => {
     let Id = req.params.id;
@@ -39,7 +36,6 @@ const getExamById = async (req, res) => {
     return upcomingexam;
 }
 const updateExamById = async (req, res) => {
-
     try {
         let Id = req.params.id;
         let upcomingexam = await CandidateResponse.update(req.body, {

@@ -7,16 +7,14 @@ router.get('/getallcandidate', candidateController.getAllcandidate);
 
 router.post('/addcandidate', candidateController.addcandidate);
 
-router.get('/getcandidatebyid/:id', candidateController.getCandidatebyId);
+router.get('/getcandidate/id/:id', candidateController.getCandidatebyId);
 
-router.put('/updatecandidate/:id', candidateController.updateCandidate);
+router.put('/updatecandidate/id/:id', candidateController.updateCandidate);
 
-router.delete('/deletecandidate/:id', candidateController.deleteCandidateByid);
+router.delete('/deletecandidate/id/:id', candidateController.deleteCandidateByid);
 
-router.get('/getallcandidatewithexam', candidateController.getAllcandidateWithExam);
+router.get('/getallcandidate/exam', candidateController.getAllcandidateWithExam);
 
-router.get('/getcandidatebyidwithexam/:id', candidateController.getCandidatebyIdWithExam);
-
-router.get('/getbyquery',candidateController.candidateByQuery);
+router.get('/getcandidateexam/id/:id', candidateController.getCandidatebyIdWithExam);
 
 module.exports = router;

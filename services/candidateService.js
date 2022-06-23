@@ -32,15 +32,6 @@ const deleteCandidate = async (req) => {
     let deletedcandidate = await candidateRepo.deleteCandidateByid(req);
     return deletedcandidate;
 }
-const getcandidateByquery = async (req) => {
-    let c = await candidateRepo.getcandidate(req);
-    return c;
-}
-const getbyIDSts = async (req) =>{
-    let c = await candidateRepo.getcandidateByIdStatus(req);
-    return c;
-}
-
 module.exports = {
     create,
     getall,
@@ -49,6 +40,4 @@ module.exports = {
     deleteCandidate,
     getOneByIdWithExam,
     getallWithExam,
-    getcandidateByquery,
-    getbyIDSts
 }

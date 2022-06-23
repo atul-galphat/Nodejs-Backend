@@ -1,5 +1,6 @@
 const dbconfig = require('../dbConfig/dbconfig.js');
 const { Sequelize, DataTypes } = require("sequelize");
+const logger = require('../loggerConfig/loggerConfig');
 
 const sequelize = new Sequelize(
     dbconfig.DB,
@@ -20,9 +21,10 @@ const sequelize = new Sequelize(
 )
 sequelize.authenticate()
     .then(() => {
-        console.log("connected......");
+        logger.info('DataBase Connected Successfuly..')
     })
     .catch(err => {
+        logger.error('Unable to connect with DataBase - '+err +' : '+__filename)
         console.log("error" + err);
     })
 const db = {}
@@ -32,8 +34,6 @@ db.sequelize = sequelize
 db.candidates = require('./candidate.js')(sequelize, DataTypes)
 db.candidateExam = require('./candidateExam')(sequelize, DataTypes)
 db.candidateResponse = require('./candidateResponse')(sequelize,DataTypes)
-
-//db.response = require('../entity/response.js')(sequelize,DataTypes)
 
 db.sequelize.sync({ force: false })
     .then(() => {
